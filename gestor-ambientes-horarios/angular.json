@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-gestor-ambientes": {
+    "gestor-ambientes-horarios": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,11 +17,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular-gestor-ambientes",
+            "outputPath": "dist/gestor-ambientes-horarios",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -34,14 +35,18 @@
             "styles": [
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/primeicons/primeicons.css"
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+
             ],
-            "scripts": [ "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-          ],
+            "scripts": [
+               "node_modules/jquery/dist/jquery.min.js",
+               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ],
             "server": "src/main.server.ts",
-            
+            "prerender": true,
             "ssr": {
-              "entry": "src/server.ts"
+              "entry": "server.ts"
             }
           },
           "configurations": {
@@ -54,8 +59,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
                 }
               ],
               "outputHashing": "all"
@@ -72,10 +77,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-gestor-ambientes:build:production"
+              "buildTarget": "gestor-ambientes-horarios:build:production"
             },
             "development": {
-              "buildTarget": "angular-gestor-ambientes:build:development"
+              "buildTarget": "gestor-ambientes-horarios:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -108,6 +113,6 @@
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": "5c67cb8c-c6b4-403b-a457-ca4cac670f73"
   }
 }
